@@ -1,9 +1,11 @@
 package telran.io;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MyFiles {
+	
 public static void displayDir(String path, int maxDepth) throws IOException {
 	//TODO
 	//Throwing IllegalArgumentException in the case the given is not a directory
