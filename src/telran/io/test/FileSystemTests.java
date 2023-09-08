@@ -41,6 +41,6 @@ class FileSystemTests {
 
 	@Test
 	void displayDirTest() throws IOException {
-		MyFiles.displayDir("/Users/User", 3);
+		MyFiles.displayDir("/Users/romansavushkin/Documents", 2);
 	}
 }
