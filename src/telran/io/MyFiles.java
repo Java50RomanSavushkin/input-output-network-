@@ -33,10 +33,10 @@ public class MyFiles {
 		Files.walkFileTree(normalizedPath, new HashSet<>(), maxDepth, new SimpleFileVisitor<Path>() {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attr) {
-				printNode(file, count, null);
+					printNode(file, count, null);
 				return FileVisitResult.CONTINUE;
 			}
- 
+  
 			@Override
 			public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
 				printNode(dir, count, exc);
@@ -49,11 +49,14 @@ public class MyFiles {
 				return FileVisitResult.CONTINUE;
 			}
 		});
-	}; 
-
-	static void printNode(Path path, int count, IOException exc) {
-		System.out.printf("%s%s-%s %s\n", " ".repeat(SPACES_PER_LEVEL * (path.getNameCount() - count)),
-				path.getFileName(), Files.isDirectory(path) ? "dir" : "file", exc != null ? exc : "");
-	}
+	};
  
+	static void printNode(Path path, int count, IOException exc) {
+	    String fileName = path.getFileName().toString();
+	    if (!fileName.startsWith(".") && !fileName.startsWith("@")) { 
+	        System.out.printf("%s%s-%s %s\n", " ".repeat(SPACES_PER_LEVEL * (path.getNameCount() - count)),
+	                fileName, Files.isDirectory(path) ? "dir" : "file", exc != null ? exc : "");
+	    }
+	}
+
 }
