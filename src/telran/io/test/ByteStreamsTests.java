@@ -24,7 +24,7 @@ public class ByteStreamsTests {
 			output.write(DATA.getBytes());
 		}
 	}
-
+ 
 	@Test
 	@Order(2)
 	void fileInputStreamTest() throws Exception {
