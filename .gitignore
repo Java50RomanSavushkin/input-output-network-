@@ -4,3 +4,6 @@
 /.settings
 **/.DS_Store
 .DS_Store
+/printWriterFile
+/big_file
+/printStreamFile

@@ -14,17 +14,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ByteStreamsTests {
-	private static final String DATA = "Hello World";
+
+	private static final String DATA = "Hello World!!!";
 	private static final String FILE_NAME = "hello.txt";
 
 	@Test
 	@Order(1)
 	void fileOutputStreamTest() throws Exception {
-		try (OutputStream output = new FileOutputStream(FILE_NAME)) {
+		try (OutputStream output = new FileOutputStream(FILE_NAME);) {
 			output.write(DATA.getBytes());
 		}
 	}
-  
+
 	@Test
 	@Order(2)
 	void fileInputStreamTest() throws Exception {
@@ -35,4 +36,5 @@ public class ByteStreamsTests {
 			assertEquals(DATA, new String(buffer));
 		}
 	}
+
 }
