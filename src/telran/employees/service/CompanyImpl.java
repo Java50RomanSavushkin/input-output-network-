@@ -2,7 +2,12 @@ package telran.employees.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import telran.employees.dto.DepartmentSalary;
@@ -69,11 +74,16 @@ public class CompanyImpl implements Company {
 
 	@Override
 	public List<SalaryDistribution> getSalaryDistribution(int interval) {
-		Map<Integer, Long> mapIntervalNumbers = employees.values().stream()
+		Map<Integer, Long> mapIntervalNumbers = employees.values()
+				.stream()
 				.collect(Collectors.groupingBy(e -> e.salary() / interval, Collectors.counting()));
 		return mapIntervalNumbers.entrySet().stream()
-				.map(e -> new SalaryDistribution(e.getKey() * interval, e.getKey() * interval + interval, e.getValue().intValue()))
-				.sorted((sd1, sd2) -> Integer.compare(sd1.min(), sd2.min())).toList();
+				.map(
+						e -> new SalaryDistribution(
+								e.getKey() * interval, e.getKey() * interval + interval, e.getValue().intValue()
+								
+								)
+						).sorted((sd1, sd2) -> Integer.compare(sd1.min(), sd2.min())).toList();
 	}
 
 	@Override
